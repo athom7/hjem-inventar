@@ -18,7 +18,7 @@ beholdes, smides ud, doneres eller sælges. Oversigten er boligens egen plantegn
 ## Data og privatliv
 - Inventar og plantegninger ligger kun på telefonen (IndexedDB). De forlader den kun ved eksport/backup.
 - **Ingen personlige data i repoet**: ingen rigtig plantegning, ingen rigtige inventarlister.
-  `demo/eksempel-plan.svg` er en fiktiv bolig og bruges til demo og test.
+  `demo/eksempel-plan.svg` er en fiktiv bolig og bruges til demo og test. Skærmbilleder i `docs/` viser kun den.
 
 ## Arkitektur – lagdelingen må ikke brydes
 - `js/model/`, `js/parse/`, `js/data/export.js` = rene funktioner. Ingen DOM, `window` eller IndexedDB. Testes i Node.
