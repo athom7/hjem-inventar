@@ -25,7 +25,7 @@ test('stored rectangles are kept inside the plan; mis-taps are not rooms', () =>
 
 test('the label sits in the largest part of an L-shaped room', () => {
   assert.equal(labelAnchor([]), null);
-  assert.deepEqual(labelAnchor([{ x: 0, y: 0, w: 0.1, h: 0.1 }, { x: 0.2, y: 0.2, w: 0.4, h: 0.2 }]), { x: 0.4, y: 0.3 });
+  assert.deepEqual(labelAnchor([{ x: 0, y: 0, w: 0.1, h: 0.1 }, { x: 0.2, y: 0.2, w: 0.4, h: 0.2 }]), { x: 0.4, y: 0.3, maxW: 0.4 });
 });
 
 test('the area under a point, top-most first', () => {

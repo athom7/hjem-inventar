@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hjem-inventar</title>
+  <meta name="description" content="Gå rundt i boligen, indtal hvad der står i hvert rum, og beslut hvad der skal med, smides ud, doneres eller sælges.">
+  <meta name="theme-color" content="#e9ebee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16191d" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Inventar">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <button id="back" class="icon-btn" type="button" aria-label="Tilbage" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <h1 id="title">Hjem-inventar</h1>
+  </header>
+
+  <div id="banners"></div>
+  <main id="view" tabindex="-1">
+    <noscript><p class="note">Hjem-inventar kræver JavaScript.</p></noscript>
+  </main>
+
+  <nav class="tabbar" aria-label="Hovedmenu">
+    <a href="#/" data-nav="home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" /></svg>
+      <span>Oversigt</span>
+    </a>
+    <a href="#/triage" data-nav="triage">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" /></svg>
+      <span>Beslut</span>
+    </a>
+    <a href="#/lists/trash" data-nav="lists">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01" /></svg>
+      <span>Lister</span>
+    </a>
+    <a href="#/settings" data-nav="settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" /><circle cx="16" cy="7" r="2" /><circle cx="10" cy="17" r="2" /></svg>
+      <span>Indstillinger</span>
+    </a>
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="dialog"></dialog>
+</body>
+</html>

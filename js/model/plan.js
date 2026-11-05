@@ -32,11 +32,13 @@ export function clampRect(r) {
 
 export const isUsableRect = (r) => r.w >= MIN_SIDE && r.h >= MIN_SIDE;
 
-// Where to put a room's label: the centre of its largest area (an L-shaped room has two).
+// The largest of a room's areas (an L-shaped room has two). null when the room is not marked.
+export const largestArea = (areas) => (areas.length ? areas.reduce((best, a) => (a.w * a.h > best.w * best.h ? a : best)) : null);
+
+// Where to put a room's label: the centre of its largest area, no wider than that area.
 export function labelAnchor(areas) {
-  if (!areas.length) return null;
-  const big = areas.reduce((best, a) => (a.w * a.h > best.w * best.h ? a : best));
-  return { x: round(big.x + big.w / 2), y: round(big.y + big.h / 2) };
+  const big = largestArea(areas);
+  return big ? { x: round(big.x + big.w / 2), y: round(big.y + big.h / 2), maxW: big.w } : null;
 }
 
 // Index of the area under a point, searching the last drawn first (it is on top). -1 if none.
