@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- App icon: a floor plan with one room still to decide. -->
+  <rect width="512" height="512" rx="112" fill="#2d5b86"/>
+  <g fill="none" stroke="#ffffff" stroke-width="22" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M112 136h288v240H112z"/>
+    <path d="M256 136v120M256 300v76M112 256h100M300 256h100"/>
+  </g>
+  <rect x="129" y="153" width="110" height="86" rx="6" fill="#f0b44c" fill-opacity="0.9"/>
+  <path d="M318 318l26 26 46-52" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
