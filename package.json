@@ -1,0 +1,10 @@
+{
+  "name": "hjem-inventar",
+  "private": true,
+  "type": "module",
+  "description": "Inventar-app til telefonen: rum for rum på boligens plantegning. Ingen afhængigheder.",
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8080"
+  }
+}
