@@ -30,6 +30,7 @@ test('a decision said at the end of an item', () => {
     'Sofaen×1:keep', 'Lampen×1:sell', 'Stole×2:donate', 'Kommoden×1:keep',
   ]);
   assert.deepEqual(names('kasse med kabler – smid ud'), ['Kasse med kabler×1:trash']);
+  assert.deepEqual(names('en kaffemaskine der skal med, en stol som skal sælges'), ['Kaffemaskine×1:keep', 'Stol×1:sell']);
 });
 
 test('"med" and "ud" alone are not decisions', () => {

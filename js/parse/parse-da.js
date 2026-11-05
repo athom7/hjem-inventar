@@ -19,12 +19,12 @@ const LEAD_IN = new RegExp(
   'i',
 );
 
-// A decision said at the end of an item. Checked in order; first match wins.
+// A decision said at the end of an item, also as a clause ("… der skal med"). Checked in order; first match wins.
 const DECISION_SUFFIXES = [
-  ['trash', /\s*[-–:]?\s*(?:som\s+)?(?:skal\s+)?(?:smides\s+ud|smid\s+ud|smides|kasseres|ud|i\s+skraldespanden|på\s+genbrugspladsen)$/i],
-  ['donate', /\s*[-–:]?\s*(?:som\s+)?(?:skal\s+)?(?:doneres|donér|doner|gives\s+væk|til\s+genbrug)$/i],
-  ['sell', /\s*[-–:]?\s*(?:som\s+)?(?:skal\s+)?(?:sælges|sælg|på\s+dba|til\s+salg)$/i],
-  ['keep', /\s*[-–:]?\s*(?:som\s+)?(?:skal\s+)?(?:beholdes|behold|med|med\s+i\s+flytningen)$/i],
+  ['trash', /\s*[-–:]?\s*(?:(?:som|der)\s+)?(?:skal\s+)?(?:smides\s+ud|smid\s+ud|smides|kasseres|ud|i\s+skraldespanden|på\s+genbrugspladsen)$/i],
+  ['donate', /\s*[-–:]?\s*(?:(?:som|der)\s+)?(?:skal\s+)?(?:doneres|donér|doner|gives\s+væk|til\s+genbrug)$/i],
+  ['sell', /\s*[-–:]?\s*(?:(?:som|der)\s+)?(?:skal\s+)?(?:sælges|sælg|på\s+dba|til\s+salg)$/i],
+  ['keep', /\s*[-–:]?\s*(?:(?:som|der)\s+)?(?:skal\s+)?(?:beholdes|behold|med|med\s+i\s+flytningen)$/i],
 ];
 
 // "skal med" must only count as a decision when "skal" is there – "kasse med" is a description.
