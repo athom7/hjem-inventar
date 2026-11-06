@@ -12,10 +12,11 @@ import { renderCapture } from './ui/capture.js';
 import { renderTriage, resetTriage } from './ui/triage.js';
 import { renderLists } from './ui/lists.js';
 import { renderSettings } from './ui/settings.js';
+import { renderQuickstart } from './ui/quickstart.js';
 import { exportBackup } from './ui/actions.js';
 
-const VIEWS = { home: renderHome, plan: renderPlanEdit, room: renderRoom, capture: renderCapture, triage: renderTriage, lists: renderLists, settings: renderSettings };
-const NAV_OF = { home: 'home', plan: 'home', room: 'home', capture: 'home', triage: 'triage', lists: 'lists', settings: 'settings' };
+const VIEWS = { home: renderHome, plan: renderPlanEdit, room: renderRoom, capture: renderCapture, triage: renderTriage, lists: renderLists, settings: renderSettings, quickstart: renderQuickstart };
+const NAV_OF = { home: 'home', plan: 'home', room: 'home', capture: 'home', quickstart: 'home', triage: 'triage', lists: 'lists', settings: 'settings' };
 const PREFS_KEY = 'hjem-inventar-prefs';
 
 const view = document.getElementById('view');
@@ -101,6 +102,7 @@ function route() {
     case 'triage': return ['triage', { roomId: parts[1] ?? null }];
     case 'lists': return ['lists', { decision: parts[1] ?? 'trash' }];
     case 'settings': return ['settings', {}];
+    case 'quickstart': return ['quickstart', {}];
     default: return ['home', {}];
   }
 }

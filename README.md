@@ -14,6 +14,8 @@ Gå rundt i boligen med telefonen, sig hvad der står i hvert rum, og beslut hva
 
 1. **Læg plantegningen ind.** Har du den som PDF, så tag et skærmbillede af den og vælg billedet. Én tegning pr. etage.
 2. **Markér rummene.** Træk en firkant over hvert rum med fingeren. Et L-formet rum kan få to firkanter.
+   *Har du ikke plantegningen endnu?* Brug **Hurtigstart**: skriv antal værelser og badeværelser fra
+   BBR-meddelelsen, så opretter appen rummene. Når tegningen kommer, markerer du dem på den.
 3. **Indtal et rum.** Tryk på rummet og derefter på »Indtal ting«, og sig hvad du ser:
    > »en sofa, to lamper og en kasse med gamle kabler. Printeren skal smides ud.«
 

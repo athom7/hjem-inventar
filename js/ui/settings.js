@@ -31,6 +31,12 @@ export function renderSettings(view, ctx) {
       fileButton({ label: '+ Læg plantegning ind', accept: 'image/*', kind: 'primary', onFile: (file) => addPlanFromFile(ctx, file) }),
       doc.floors.some((f) => f.name === 'Eksempel-bolig') ? null : h('button', { type: 'button', class: 'btn btn-quiet', text: 'Prøv med en eksempel-bolig', onclick: () => loadDemo(ctx) }))));
 
+  // --- rooms ---
+  view.append(h('section', { class: 'panel' },
+    h('h2', { text: 'Rum' }),
+    h('p', { class: 'muted', text: 'Opret husets rum på én gang ud fra antal værelser og badeværelser i BBR-meddelelsen. Rum, der findes i forvejen, springes over.' }),
+    h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/quickstart', text: 'Hurtigstart: opret rum' }))));
+
   // --- backup and export ---
   view.append(h('section', { class: 'panel' },
     h('h2', { text: 'Backup og eksport' }),

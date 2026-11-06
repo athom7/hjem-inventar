@@ -22,9 +22,9 @@ export function renderHome(view, ctx) {
   if (!doc.floors.length && !doc.rooms.length) {
     view.append(emptyState(
       'Velkommen',
-      'Start med boligens plantegning. Har du den som PDF, så tag et skærmbillede af den og vælg billedet her. Du kan også starte uden tegning og bare oprette rummene.',
+      'Start med boligens plantegning. Har du den som PDF, så tag et skærmbillede af den og vælg billedet her. Har du ikke tegningen endnu, så opret rummene ud fra BBR-meddelelsen og markér dem senere.',
       fileButton({ label: 'Læg plantegning ind', accept: 'image/*', kind: 'primary', onFile: (f) => addPlanFromFile(ctx, f) }),
-      h('button', { type: 'button', class: 'btn', text: 'Opret rum uden tegning', onclick: () => newRoom(ctx, null) }),
+      h('a', { class: 'btn', href: '#/quickstart', text: 'Hurtigstart: opret rummene' }),
       h('button', { type: 'button', class: 'btn btn-quiet', text: 'Prøv med en eksempel-bolig', onclick: () => loadDemo(ctx) }),
     ));
     return;
@@ -79,13 +79,16 @@ export function renderHome(view, ctx) {
         h('a', { class: 'btn btn-small', href: `#/plan/${floor.id}`, text: 'Markér rum' }),
         h('button', { type: 'button', class: 'btn btn-small', text: '+ Rum', onclick: () => newRoom(ctx, floor.id) })),
       legendFor(filter)));
-    if (!rooms.some((r) => r.areas.length)) {
+    if (!rooms.length) {
+      view.append(h('p', { class: 'note' }, 'Ingen rum på denne etage endnu. ', h('a', { href: `#/plan/${floor.id}`, text: 'Markér rum på tegningen' }), ' eller brug ', h('a', { href: '#/quickstart', text: 'hurtigstart' }), '.'));
+    } else if (!rooms.some((r) => r.areas.length)) {
       view.append(h('p', { class: 'note' }, 'Ingen rum er markeret på tegningen endnu. ', h('a', { href: `#/plan/${floor.id}`, text: 'Markér rum' }), '.'));
     }
     view.append(roomCards(ctx, rooms, counts, filter, floor.name));
   } else {
     view.append(h('div', { class: 'plan-tools' },
       fileButton({ label: 'Læg plantegning ind', accept: 'image/*', onFile: (f) => addPlanFromFile(ctx, f) }),
+      h('a', { class: 'btn btn-small', href: '#/quickstart', text: 'Hurtigstart' }),
       h('button', { type: 'button', class: 'btn btn-small', text: '+ Rum', onclick: () => newRoom(ctx, null) })));
   }
 

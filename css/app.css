@@ -652,6 +652,45 @@ span.qty { color: var(--muted); margin-right: 6px; font-variant-numeric: tabular
 .decision-picker { display: flex; flex-wrap: wrap; gap: 6px; }
 .decision-picker .btn { flex: 1 1 auto; border-width: 2px; }
 
+/* ---------- quick start ---------- */
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.stepper + .stepper { border-top: 1px solid var(--line); }
+.stepper-text { display: grid; gap: 2px; min-width: 0; }
+.stepper-controls { display: flex; align-items: center; gap: 8px; flex: none; }
+.stepper-controls .btn { width: 48px; padding: 0; font-size: 22px; }
+.stepper-value { min-width: 32px; text-align: center; font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.chips.wrap { flex-wrap: wrap; overflow: visible; }
+.quick-floor { margin-top: 12px; }
+
+.room-preview {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+
+.room-preview li {
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  font-size: 14px;
+}
+
+.room-preview li.exists { border-style: dashed; color: var(--muted); text-decoration: line-through; }
+.room-preview li.exists small { text-decoration: none; display: inline-block; }
+
 /* ---------- empty state, panels, settings ---------- */
 
 .empty { text-align: center; padding: 28px 8px; }

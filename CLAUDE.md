@@ -50,6 +50,6 @@ beholdes, smides ud, doneres eller sælges. Oversigten er boligens egen plantegn
 
 ## Arbejdsgang
 - Bygges i faser (se `PLAN.md`). Byg kun den aktuelle fase – spring ikke frem.
-- Status: fase 1 (plantegning, indtaling, beslutninger, eksport) er færdig. Fase 2 (flytning) er næste.
+- Status: fase 1 (plantegning, hurtigstart, indtaling, beslutninger, eksport) er færdig. Fase 2 (flytning) er næste.
 - Kør `node --test` og åbn siden lokalt uden konsolfejl før commit.
 - Små, beskrivende commits på engelsk.

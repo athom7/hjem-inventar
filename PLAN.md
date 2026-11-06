@@ -17,6 +17,9 @@ Så kan man nå gennem huset, før man bliver træt af det.
 
 ## Fase 1 – plantegning, gennemgang og beslutninger ✅
 - **Etager og plantegninger:** et billede pr. etage (PNG/JPG/SVG), valgt med faner.
+- **Hurtigstart:** opret husets rum ud fra antal værelser og badeværelser i BBR (»værelser« = stuer + soveværelser)
+  plus typiske rum (køkken, entré, carport …), så gennemgangen kan starte før plantegningen er der. Den første
+  plantegning overtager rummene, og markeringsdialogen tilbyder dem.
 - **Markér rum:** træk en firkant over rummet på tegningen. Et rum kan have flere firkanter (L-formede rum).
   Koordinaterne er normaliserede (0..1), så de passer på alle skærme.
 - **Oversigten (forsiden):** hvert rum på tegningen viser navn, antal ting, antal uafgjorte og en søjle med

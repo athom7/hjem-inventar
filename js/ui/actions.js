@@ -5,7 +5,7 @@ import { ask, choose } from './dialog.js';
 import * as db from '../data/db.js';
 import { download, blobToDataUrl, dataUrlToBlob, imageAspect } from '../data/files.js';
 import { toCSV, toBackup, fromBackup, fileStamp } from '../data/export.js';
-import { addFloor, newId, markExported, mergeDocs } from '../model/inventory.js';
+import { addFloor, adoptLooseRooms, newId, markExported, mergeDocs } from '../model/inventory.js';
 import { addDemo, DEMO_PLAN_URL } from '../model/demo.js';
 
 // A button that opens the file picker. The <input> sits inside the <label>, so a tap opens it on every phone.
@@ -38,9 +38,16 @@ export async function addPlanFromFile(ctx, file) {
   const imageId = newId();
   await db.putImage(imageId, file);
   ctx.images.set(imageId, URL.createObjectURL(file));
-  const floor = ctx.commit((doc) => addFloor(doc, { name, imageId, aspect }));
+  // The first plan takes the rooms made without one (quick start), so they can be marked on it straight away.
+  const first = !ctx.doc.floors.length;
+  const { floor, moved } = ctx.commit((doc) => {
+    const f = addFloor(doc, { name, imageId, aspect });
+    return { floor: f, moved: first ? adoptLooseRooms(doc, f.id) : [] };
+  });
   ctx.setPref('floorId', floor.id);
-  ctx.toast('Plantegningen er lagt ind. Træk nu en firkant over hvert rum.');
+  ctx.toast(moved.length
+    ? `Plantegningen er lagt ind med dine ${moved.length} rum. Træk en firkant over hvert rum, og vælg hvilket det er.`
+    : 'Plantegningen er lagt ind. Træk nu en firkant over hvert rum.');
   ctx.go(`#/plan/${floor.id}`);
 }
 

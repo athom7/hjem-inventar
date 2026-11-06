@@ -5,7 +5,7 @@ import { h, s } from './dom.js';
 import { ask, choose, confirmDialog } from './dialog.js';
 import { planBoard, zoomControls, VIEW_W } from './board.js';
 import { toPlanPoint, rectFromPoints, isUsableRect, areaAt } from '../model/plan.js';
-import { addRoom, addArea, removeArea, findFloor, roomsOn } from '../model/inventory.js';
+import { addRoom, addArea, removeArea, findFloor, roomsOn, setRoomFloor } from '../model/inventory.js';
 
 let zoom = 1;
 let mode = 'draw'; // 'draw' | 'pan' – pan lets one finger scroll a zoomed plan
@@ -90,12 +90,14 @@ export function renderPlanEdit(view, ctx, { floorId }) {
 async function assignRect(ctx, floor, rooms, rect) {
   const unmarked = rooms.filter((r) => !r.areas.length);
   const marked = rooms.filter((r) => r.areas.length);
-  const choice = rooms.length
+  const loose = ctx.doc.rooms.filter((r) => r.floorId === null); // e.g. from quick start on a second floor
+  const choice = rooms.length || loose.length
     ? await choose({
       title: 'Hvilket rum er det?',
       options: [
         { value: '__new', label: 'Nyt rum …', kind: 'primary' },
         ...unmarked.map((r) => ({ value: r.id, label: r.name, hint: 'Ikke markeret endnu' })),
+        ...loose.map((r) => ({ value: r.id, label: r.name, hint: `Uden etage – flyttes til ${floor.name}` })),
         ...marked.map((r) => ({ value: r.id, label: r.name, hint: 'Tilføj en firkant mere (L-formet rum)' })),
       ],
     })
@@ -107,7 +109,10 @@ async function assignRect(ctx, floor, rooms, rect) {
     if (!name) return;
     roomId = ctx.commit((doc) => addRoom(doc, { name, floorId: floor.id })).id;
   }
-  ctx.commit((doc) => addArea(doc, roomId, rect));
+  ctx.commit((doc) => {
+    if (loose.some((r) => r.id === roomId)) setRoomFloor(doc, roomId, floor.id);
+    addArea(doc, roomId, rect);
+  });
 }
 
 async function offerRemove(ctx, rooms, p) {
