@@ -94,6 +94,31 @@ export function addRoom(doc, { name, floorId = null }) {
   return room;
 }
 
+// Rooms made before there was a floor plan (quick start) move onto a floor. Their marking starts empty either way.
+// Returns the rooms that moved.
+export function adoptLooseRooms(doc, floorId) {
+  mustFind(doc.floors, floorId, 'Etagen');
+  const loose = doc.rooms.filter((r) => r.floorId === null);
+  for (const room of loose) setRoomFloor(doc, room.id, floorId);
+  return loose;
+}
+
+// Case-insensitive key for comparing room names ("køkken" and "Køkken" are the same room).
+export const roomNameKey = (name) => cleanName(name).toLocaleLowerCase('da-DK');
+
+// Several rooms at once (quick start). Names that already exist, or repeat, are skipped. Returns the new rooms.
+export function addRooms(doc, names, floorId = null) {
+  const taken = new Set(doc.rooms.map((r) => roomNameKey(r.name)));
+  const created = [];
+  for (const name of names) {
+    const k = roomNameKey(name);
+    if (!k || taken.has(k)) continue;
+    taken.add(k);
+    created.push(addRoom(doc, { name, floorId }));
+  }
+  return created;
+}
+
 export function renameRoom(doc, id, name) {
   const room = mustFind(doc.rooms, id, 'Rummet');
   room.name = required(name, 'Rummet');

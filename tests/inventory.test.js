@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  createDoc, addFloor, addRoom, addArea, removeArea, addItems, updateItem, removeRoom, removeFloor,
+  createDoc, addFloor, addRoom, addRooms, adoptLooseRooms, addArea, removeArea, addItems, updateItem, removeRoom, removeFloor,
   setRoomFloor, validateDoc, mergeDocs, itemsIn,
 } from '../js/model/inventory.js';
 
@@ -116,4 +116,24 @@ test('mergeDocs keeps everything and lets the newest version of the same thing w
   assert.deepEqual(merged.rooms.map((r) => r.id), ['r1', 'r2']);
   assert.deepEqual(merged.items.map((i) => `${i.id}:${i.decision}`), ['a:trash', 'b:keep', 'c:undecided']);
   assert.deepEqual(merged.meta, { createdAt: 50, lastExportAt: 70 });
+});
+
+test('addRooms creates several rooms on a floor and skips names that exist or repeat', () => {
+  const { doc, floor } = sample(); // already has "Køkken"
+  const created = addRooms(doc, ['Entré', 'køkken', 'Stue', 'Entré', '  '], floor.id);
+  assert.deepEqual(created.map((r) => r.name), ['Entré', 'Stue']);
+  assert.ok(created.every((r) => r.floorId === floor.id && r.areas.length === 0));
+  assert.equal(doc.rooms.length, 3);
+  assert.deepEqual(addRooms(doc, ['Bad']).map((r) => r.floorId), [null]);
+});
+
+test('rooms made before a floor plan move onto the first floor', () => {
+  const doc = createDoc(0);
+  addRooms(doc, ['Entré', 'Stue']);
+  const floor = addFloor(doc, { name: 'Stueetage' });
+  const kept = addRoom(doc, { name: 'Bad', floorId: floor.id });
+  assert.deepEqual(adoptLooseRooms(doc, floor.id).map((r) => r.name), ['Entré', 'Stue']);
+  assert.ok(doc.rooms.every((r) => r.floorId === floor.id));
+  assert.equal(kept.floorId, floor.id);
+  assert.throws(() => adoptLooseRooms(doc, 'nope'), /findes ikke/);
 });
