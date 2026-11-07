@@ -13,10 +13,11 @@ import { renderTriage, resetTriage } from './ui/triage.js';
 import { renderLists } from './ui/lists.js';
 import { renderSettings } from './ui/settings.js';
 import { renderQuickstart } from './ui/quickstart.js';
+import { renderWalk } from './ui/walk.js';
 import { exportBackup } from './ui/actions.js';
 
-const VIEWS = { home: renderHome, plan: renderPlanEdit, room: renderRoom, capture: renderCapture, triage: renderTriage, lists: renderLists, settings: renderSettings, quickstart: renderQuickstart };
-const NAV_OF = { home: 'home', plan: 'home', room: 'home', capture: 'home', quickstart: 'home', triage: 'triage', lists: 'lists', settings: 'settings' };
+const VIEWS = { home: renderHome, plan: renderPlanEdit, room: renderRoom, capture: renderCapture, triage: renderTriage, lists: renderLists, settings: renderSettings, quickstart: renderQuickstart, walk: renderWalk };
+const NAV_OF = { home: 'home', plan: 'home', room: 'home', capture: 'home', quickstart: 'home', walk: 'home', triage: 'triage', lists: 'lists', settings: 'settings' };
 const PREFS_KEY = 'hjem-inventar-prefs';
 
 const view = document.getElementById('view');
@@ -46,10 +47,11 @@ const ctx = {
   prefs: loadPrefs(),
   installPrompt: null,
 
-  commit(change) {
+  // `render: false` saves without redrawing: the walk-through keeps its microphone running and updates itself.
+  commit(change, { render: redraw = true } = {}) {
     const result = change(ctx.doc);
     save();
-    render();
+    if (redraw) render();
     return result;
   },
   replaceDoc(doc) {
@@ -103,6 +105,7 @@ function route() {
     case 'lists': return ['lists', { decision: parts[1] ?? 'trash' }];
     case 'settings': return ['settings', {}];
     case 'quickstart': return ['quickstart', {}];
+    case 'walk': return ['walk', {}];
     default: return ['home', {}];
   }
 }

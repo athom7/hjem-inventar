@@ -42,6 +42,9 @@ beholdes, smides ud, doneres eller sælges. Oversigten er boligens egen plantegn
 - Deler på komma, punktum, linjeskift, " og ", "samt", "plus". Aldrig på "med" ("kasse med kabler" er én post).
 - Fjerner fyldord ("jeg ser", "der står" …), læser antal (cifre, en/et … tolv) og beslutning sidst i en post
   ("skal smides ud", "doneres", "sælges", "skal med").
+- Rumskift i gå-turen (`js/parse/rooms-da.js`): et rumnavn alene, eller en udløser (»nu er jeg i«, »ind i«, »videre
+  til«, »i«) + rumnavn. En ting, der blot starter med et rumnavn (»stue lampe«), er en ting. Ukendt rum efter en
+  tydelig udløser meldes, aldrig gemmes som ting. Gå-turen gemmer straks (`ctx.commit(…, { render: false })`).
 - Parseren må gerne tage fejl – brugeren retter i preview før gem. Hver ny regel skal have en test.
 
 ## Service worker
@@ -50,6 +53,6 @@ beholdes, smides ud, doneres eller sælges. Oversigten er boligens egen plantegn
 
 ## Arbejdsgang
 - Bygges i faser (se `PLAN.md`). Byg kun den aktuelle fase – spring ikke frem.
-- Status: fase 1 (plantegning, hurtigstart, indtaling, beslutninger, eksport) er færdig. Fase 2 (flytning) er næste.
+- Status: fase 1 (plantegning, hurtigstart, gå-tur, indtaling, beslutninger, eksport) er færdig. Fase 2 (flytning) er næste.
 - Kør `node --test` og åbn siden lokalt uden konsolfejl før commit.
 - Små, beskrivende commits på engelsk.

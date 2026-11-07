@@ -106,6 +106,8 @@ function houseSummary(doc) {
       h('div', {}, h('strong', { text: `${pct} %` }), h('span', { text: 'afgjort' })),
       h('div', { class: st.undecided ? 'attention' : null }, h('strong', { text: fmt(st.undecided) }), h('span', { text: 'uafgjort' }))),
     decisionBar(st, { big: true }),
+    // The walk-through is the main thing to do until there are items; after that, deciding is.
+    st.rooms ? h('a', { class: ['btn', 'btn-block', !st.things && 'btn-primary'], href: '#/walk', text: 'Gå-tur: indtal hele huset' }) : null,
     st.undecided ? h('a', { class: 'btn btn-primary btn-block', href: '#/triage', text: `Beslut ${plural(st.undecidedPosts, 'post', 'poster')}` }) : null);
 }
 

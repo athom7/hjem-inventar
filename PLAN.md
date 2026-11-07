@@ -27,6 +27,9 @@ Så kan man nå gennem huset, før man bliver træt af det.
   `room-done` (alt afgjort). Med filterchips (Smid ud, Donér, Sælg, Behold) viser hvert rum sit antal, og farvens
   styrke (`level-0..3`) viser, hvor der er mest.
 - **Rummet:** postliste og redigering, plus knapperne Indtal og Beslut.
+- **Gå-tur:** én skærm, hvor mikrofonen bliver ved med at lytte. Man siger rummets navn (»nu er jeg i køkkenet«) og
+  så tingene; hver sætning gemmes straks i det aktuelle rum. Rumskift kan også tages med et tryk. Fortryd sidste,
+  og tryk på en post for at rette den. Skærmen holdes tændt (Wake Lock), og tekstfeltet er reserve.
 - **Indtal:** tekstfelt + mikrofon (Web Speech API, `da-DK`) eller tastaturets diktering → parser → redigerbar preview → gem.
 - **Beslut:** én uafgjort post ad gangen, fem store knapper og fortryd, pr. rum eller for hele boligen.
 - **Lister:** en liste pr. beslutning, grupperet efter rum, med knapper til at kopiere og printe.

@@ -691,6 +691,41 @@ span.qty { color: var(--muted); margin-right: 6px; font-variant-numeric: tabular
 .room-preview li.exists { border-style: dashed; color: var(--muted); text-decoration: line-through; }
 .room-preview li.exists small { text-decoration: none; display: inline-block; }
 
+/* ---------- walk-through ---------- */
+
+.walk-banner {
+  display: grid;
+  gap: 2px;
+  margin: 8px 0 0;
+  padding: 12px 16px;
+  border: 2px solid var(--accent);
+  border-radius: 14px;
+  background: var(--surface-raised);
+}
+
+.walk-banner small { color: var(--muted); font-size: 13px; }
+.walk-banner strong { font-size: 26px; line-height: 1.2; overflow-wrap: anywhere; }
+
+.chip-count {
+  margin-left: 8px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--line);
+  color: var(--text);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip.selected .chip-count { background: var(--bg); color: var(--text); }
+
+.feed-entry h3 { margin: 12px 0 4px; font-size: 13px; font-weight: 600; }
+.feed .item-list { margin-top: 0; }
+
+.walk-type { margin: 16px 0; }
+.walk-type summary { padding: 10px 0; color: var(--accent); font-weight: 600; cursor: pointer; }
+.walk-type .btn { margin-top: 8px; }
+.walk-field { min-height: 72px; }
+
 /* ---------- empty state, panels, settings ---------- */
 
 .empty { text-align: center; padding: 28px 8px; }

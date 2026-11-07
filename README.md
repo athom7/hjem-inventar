@@ -16,11 +16,15 @@ Gå rundt i boligen med telefonen, sig hvad der står i hvert rum, og beslut hva
 2. **Markér rummene.** Træk en firkant over hvert rum med fingeren. Et L-formet rum kan få to firkanter.
    *Har du ikke plantegningen endnu?* Brug **Hurtigstart**: skriv antal værelser og badeværelser fra
    BBR-meddelelsen, så opretter appen rummene. Når tegningen kommer, markerer du dem på den.
-3. **Indtal et rum.** Tryk på rummet og derefter på »Indtal ting«, og sig hvad du ser:
-   > »en sofa, to lamper og en kasse med gamle kabler. Printeren skal smides ud.«
+3. **Gå-tur gennem huset.** Tryk på »Gå-tur: indtal hele huset«, og gå rundt. Sig, hvor du er (»nu er jeg i køkkenet«),
+   og sig derefter, hvad du ser. Mikrofonen bliver ved, og hver sætning gemmes med det samme i rummet. Skift rum
+   ved at sige det næste rums navn eller trykke på det. Du kan indtale flere gange i samme rum.
+   Tryk på en ting for at rette den, eller på »Fortryd sidste«.
+   > »nu er jeg i køkkenet. en kaffemaskine, seks stole sælges, en gammel brødrister skal smides ud. Nu er jeg i stuen …«
 
-   Appen laver det om til en liste, som du retter, før den gemmes. Sig »skal med«, »skal smides ud«, »doneres«
-   eller »sælges« efter en ting for at beslutte med det samme.
+   Hellere ét rum ad gangen? Tryk på rummet og derefter på »Indtal ting«. Så får du en liste, du retter og
+   godkender, før den gemmes. Sig »skal med«, »skal smides ud«, »doneres« eller »sælges« efter en ting for at
+   beslutte med det samme.
 4. **Beslut.** Én uafgjort ting ad gangen med fire store knapper: Behold, Smid ud, Donér og Sælg.
 5. **Brug listerne.** »Smid ud« til genbrugspladsen, »Sælg« til annoncerne. De kan kopieres eller printes.
 

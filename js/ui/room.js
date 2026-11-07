@@ -21,6 +21,7 @@ export function renderRoom(view, ctx, { roomId }) {
       st.things ? [decisionBar(st, { big: true }), legend(st)] : null,
       h('div', { class: 'actions' },
         h('a', { class: 'btn btn-primary btn-big', href: `#/room/${room.id}/capture` }, h('span', { class: 'mic-icon', 'aria-hidden': 'true' }), 'Indtal ting'),
+        h('a', { class: 'btn btn-big', href: '#/walk', text: 'Gå-tur herfra', onclick: () => ctx.setPref('walkRoomId', room.id) }),
         st.undecidedPosts ? h('a', { class: 'btn btn-big', href: `#/triage/${room.id}`, text: `Beslut ${plural(st.undecidedPosts, 'post', 'poster')}` }) : null)),
   );
 

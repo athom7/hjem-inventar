@@ -3,7 +3,7 @@
 // (stale-while-revalidate), so an update reaches the phone on the next start.
 // Bump CACHE when a file is removed or renamed, so the old cache is cleared.
 
-const CACHE = 'hjem-inventar-v2';
+const CACHE = 'hjem-inventar-v3';
 
 const ASSETS = [
   './',
@@ -26,6 +26,7 @@ const ASSETS = [
   './js/model/quickstart.js',
   './js/model/stats.js',
   './js/parse/parse-da.js',
+  './js/parse/rooms-da.js',
   './js/ui/actions.js',
   './js/ui/board.js',
   './js/ui/capture.js',
@@ -40,6 +41,7 @@ const ASSETS = [
   './js/ui/settings.js',
   './js/ui/speech.js',
   './js/ui/triage.js',
+  './js/ui/walk.js',
   './js/ui/widgets.js',
 ];
 
