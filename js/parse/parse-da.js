@@ -4,7 +4,7 @@
 // Deliberately simple and predictable: the user checks the result in a preview before saving, so a wrong split
 // costs one tap. Splits on commas, full stops, line breaks, " og ", " samt ", " plus " – never on "med".
 
-const NUMBER_WORDS = {
+export const NUMBER_WORDS = {
   en: 1, et: 1, 'én': 1, 'ét': 1, to: 2, tre: 3, fire: 4, fem: 5, seks: 6, syv: 7, otte: 8, ni: 9, ti: 10, elleve: 11, tolv: 12,
 };
 
